@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import Register from './register/Register.jsx';
-import Login from './login/Login.jsx';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import BusinessDashboard from '../dashboard/BusDash';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <Login />
-      <Register />
+    <div className='App'>
+        <Router>
+          <Routes>
+              <Route path="/" element={<BusinessDashboard />} />
+              <Route path="/business/:businessName" element={<BusinessDashboard />} />
+          </Routes>
+        </Router>
     </div>
   );
 }
