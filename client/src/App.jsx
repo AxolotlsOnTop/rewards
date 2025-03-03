@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import BusinessDashboard from '../dashboard/BusDash';
+import CustomerDash from '../dashboard/CustomerDash';
 import './App.css';
-import CustomerDash from '../dashboard/CustomerDash.jsx';
-
-// TODO: move CustomerDash to Login component later
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <CustomerDash />
+      {/* <Router>
+        <Routes>
+          <Route path='/' element={<BusinessDashboard />} />
+          <Route
+            path='/business/:businessName'
+            element={<BusinessDashboard />}
+          />
+        </Routes>
+      </Router> */}
     </div>
   );
 }

@@ -18,6 +18,15 @@ function StampCard(props) {
             />
           ))}
         </div>
+        <div className='redeem-container'>
+          {props.stars === 10 ? (
+            <button className='redeem-btn'>Redeem</button>
+          ) : (
+            <p className='stars-needed'>
+              {10 - props.stars} stars until your next reward!
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
