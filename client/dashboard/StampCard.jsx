@@ -3,6 +3,8 @@ import './StampCard.css';
 import starFilled from '../src/assets/star-filled.svg';
 import starUnfilled from '../src/assets/star-unfilled.svg';
 
+const handleRedeem = () => {};
+
 function StampCard(props) {
   const totalStamps = 10;
 
@@ -20,7 +22,9 @@ function StampCard(props) {
         </div>
         <div className='redeem-container'>
           {props.stars === 10 ? (
-            <button className='redeem-btn'>Redeem</button>
+            <button className='redeem-btn' onClick={handleRedeem}>
+              Redeem
+            </button>
           ) : (
             <p className='stars-needed'>
               {10 - props.stars} stars until your next reward!
