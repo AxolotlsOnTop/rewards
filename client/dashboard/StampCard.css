@@ -1,0 +1,31 @@
+.stamp-cards {
+  width: 100%;
+  max-width: 340px;
+  margin: 25px 0;
+  border: 1px solid black;
+  padding: 15px 12px 20px 12px;
+}
+
+.stamp-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  padding-left: 15px;
+}
+
+.stamps-container {
+  display: flex;
+  justify-content: center;
+}
+
+.stamps {
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: max-content;
+}
+
+.stamps img {
+  height: 50px;
+  width: 50px;
+}
