@@ -63,7 +63,7 @@ userController.register = async (req, res, next) => {
     const text = `INSERT INTO accounts (user_type, phone, name) values ($1, $2, $3)`;
     // return { "exists": true } if exists
     const result = await pool.query(text, [user_type, phone, name]);
-    res.locals.newUser = result;
+    res.locals.user = result;
     return next();
     // if (result.rows[0].exists)
     // if it does, return an error (or yell at the person registering and call em a dummy)
@@ -116,11 +116,11 @@ userController.isLoggedIn = (req, res, next) => {
 
 userController.setCookie = (req, res, next) => {
   try {
-    const currentUser = res.locals.activeUser;
+    const currentUser = res.locals.user;
     res.cookie('phone', currentUser.phone);
     res.cookie('username', currentUser.username);
     console.log('cookies set!');
-    console.log('res object: ', res._headers['set-cookie']);
+    // console.log('res object: ', res._headers['set-cookie']);
     return next();
   } catch (err) {
     return next(err);
