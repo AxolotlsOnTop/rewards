@@ -51,7 +51,7 @@ userController.register = async (req, res, next) => {
   // get the name (of the business/customer), phone #, and password from the frontend
   // put "customer" in database if the user didn't click "yes" to the "are you a business?" question
   // put "business" in database if they did
-  const { name, phoneNum, password, userType } = req.body;
+  const { name, phone, password, user_type } = req.body;
   try {
     //logic for registration attempts
     // check if the phone # already exists
@@ -65,9 +65,10 @@ userController.register = async (req, res, next) => {
         message: { err: 'The phone number is registered.' },
       });
     }
-    const text1 = `INSERT INTO business (name, phoneNum, password, userType) VALUES ($1, $2, $3, $4)`;
-    await pool.query(text1, [name, phoneNum, password, userType]);
-    return res.status(201).json({ message: 'Registration successful!' });
+    const text1 = `INSERT INTO accounts (name, phone, password, user_type) VALUES ($1, $2, $3, $4)`;
+    await pool.query(text1, [name, phone, password, user_type]);
+    res.status(201).json({ message: 'Registration successful!' });
+    return next();
     // if it does, return an error (or yell at the person registering and call em a dummy)
     // if it doesn't, log them in! and add a new row in business_name Table
     // MINI STRETCH GOAL: if the phone # already exists, instead of throwing an error and breaking code, the frontend could shake and the input fields could turn red and a little message could show up at the bottom of the screen saying "this phone # is already taken!"
